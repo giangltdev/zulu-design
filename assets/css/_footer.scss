@@ -1,0 +1,44 @@
+.footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-column-gap: 50px;
+    &-heading {
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    &-link {
+        color: $gray;
+        display: inline-block;
+        font-size: 14px;
+    }
+    &-link-item {
+        margin-bottom: 30px;
+    }
+    &-desc {
+        margin: 40px 0 50px;
+        max-width: 250px;
+    }
+    @media screen and (max-width: 767.98px) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+    }
+}
+
+.social {
+    display: inline-flex;
+    &-link {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        color: #fff;
+        &:not(:last-child) {
+            margin-right: 15px;
+        }
+    }
+}

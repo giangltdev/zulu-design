@@ -1,0 +1,97 @@
+.header {
+    margin-top: 45px;
+    display: flex;
+    align-items: center;
+    &-logo {
+        margin-right: 180px;
+    }
+    &-menu {
+        display: flex;
+        align-items: center;
+        &-link {
+            color: $gray;
+            font-weight: 500;
+            transition: color 0.2s ease-in;
+            &:hover {
+                color: $primary;
+            }
+        }
+    }
+    // Nếu sử dụng flex thì khi muốn phần tử theo hướng trái margin-left: auto
+    &-auth {
+        margin-left: auto;
+    }
+}
+
+// Khi mở thì hiện ra
+.header-menu.is-active {
+    transform: translateX(0);
+}
+
+@media screen and (min-width: 1024px) {
+    .header-menu-item:not(:first-child) {
+        margin-left: 75px;
+    }
+    .menu-toggle {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .header {
+        &-logo {
+            margin-right: 0;
+        }
+        &-menu {
+            margin: 0 auto;
+        }
+        &-auth {
+            margin-left: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .header {
+        &-menu {
+            // display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 90%;
+            max-width: 300px;
+            background-color: #fff;
+            z-index: 9999;
+            display: block;
+            border-left: 1px solid #eee;
+            padding: 50px 15px;
+            // Thêm hiệu ứng
+            transition: transform 0.25s linear;
+            // Dùng để ẩn đi thanh menu
+            transform: translateX(100%);
+            // Khi active thì
+            &-link {
+                display: block;
+                padding: 20px;
+            }
+        }
+        &-auth {
+            margin-left: auto;
+        }
+    }
+    .menu-toggle {
+        font-size: 20px;
+        margin-left: 20px;
+        color: $primary;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .header {
+        margin-top: 20px;
+    }
+    .header-logo-image {
+        max-width: 90px;
+    }
+}

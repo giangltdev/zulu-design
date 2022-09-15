@@ -1,0 +1,85 @@
+.work {
+    padding-top: 145px;
+    padding-bottom: 50px;
+    &-list {
+        display: flex;
+        justify-content: space-between;
+        /** 
+            đối với việc tách khoảng trống ra thì lấy tổng khoảng trông của các cột chia cho số cột]
+            ví dụ: số cột là 3 và khoảng trống là 2
+            lấy 2 * 70 = 140px 70 khoảng cách các cột 
+            sau đó lấy tổng chia cho 3 cột 140/3 = 46,67px
+        **/
+    }
+    &-item {
+        /**
+            1. tính độ rộng của các cột bằng cách lấy 100% độ rộng chia số cột sau đó trừ đi khoảng cách 
+            giữa các cột đã tính trước đó
+            2. Tình độ dài thì cần có calc trước đó
+         **/
+        width: calc(33.33% - 46.67px);
+        padding: 40px 30px;
+        border: 1px solid $boder;
+        border-radius: 14px;
+        // Để căn giữa toàn bộ phần tử trong khối dùng flex-centerc để căng giữa toàn bộ phần tử theo chiều dọc
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        // Đối với text dùng text-align: center
+        text-align: center;
+        line-height: 1.4;
+        // Để áp dụng hiệu ứng mượt hơn dùng
+        transition: all 0.2 linear;
+        &:hover {
+            background-color: transparent;
+            box-shadow: 0 0 10px 0 rgba(#000, 0.09);
+        }
+        &-more {
+            // Để áp dụng hiệu ứng mượt hơn dùng
+            transition: all 0.2 linear;
+        }
+        &:hover .work-more {
+            border-color: $primary;
+            background-color: $primary;
+            color: #fff;
+        }
+    }
+    &-image {
+        max-height: 115px;
+        margin-bottom: 35px;
+    }
+    &-title {
+        font-size: 2.5rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+    &-desc {
+        margin-bottom: 35px;
+        /** Để giời hạn số dùng dùng text-clamp với số dòng muốn hiển thị**/
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+        max-width: 100%;
+        word-break: break-word;
+    }
+    @media screen and (max-width: 1023.98px) {
+        &-item {
+            width: calc(33.33% - 25px);
+        }
+    }
+    @media screen and (max-width: 767.98px) {
+        &-list {
+            flex-direction: column;
+            // Hoặc dùng display: block;
+        }
+        &-item {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto 25px;
+        }
+    }
+}

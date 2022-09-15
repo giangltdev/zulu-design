@@ -1,0 +1,136 @@
+.plan {
+    padding-bottom: 100px;
+    &-list {
+        display: flex;
+        justify-content: space-between;
+    }
+    &-item {
+        width: calc(33.33% - 30px);
+        padding: 75px 25px;
+        border: 1px solid #eee;
+        border-radius: 20px;
+        // (1) set flex chạy theo chiều dọc
+        display: flex;
+        flex-direction: column;
+        // fix label
+        position: relative;
+        transition: all 0.2 linear;
+        // &:hover {
+        //     background-color: transparent;
+        //     box-shadow: 0 0 10px 0 rgba(#000, 0.09);
+        // }
+        // &:hover .plan-start {
+        //     border-color: $primary;
+        //     background-color: $primary;
+        //     color: #fff;
+        // }
+        // Bỏ hover trên điện thoại
+        @media(hover: hover) {
+            &:hover {
+                background-color: transparent;
+                box-shadow: 0 0 10px 0 rgba(#000, 0.09);
+            }
+            &:hover .plan-start {
+                border-color: $primary;
+                background-color: $primary;
+                color: #fff;
+            }
+        }
+    }
+    &-label {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px;
+        background-color: $pink-color;
+        color: #fff;
+        text-transform: capitalize;
+        border-radius: 0 20px 0 20px;
+        font-size: 14px;
+    }
+    &-name {
+        font-size: 2rem;
+        font-weight: 500;
+        margin-bottom: 25px;
+    }
+    &-price {
+        font-size: 1.4rem;
+        font-weight: 400;
+        padding-bottom: 40px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #eee;
+    }
+    &-symbol {
+        vertical-align: top;
+    }
+    &-month {
+        font-size: 3rem;
+        font-weight: 600;
+    }
+    &-desc {
+        margin-bottom: 50px;
+    }
+    &-feature {
+        font-style: 20px;
+        margin-bottom: 35px;
+        font-weight: 500;
+    }
+    &-feature-item {
+        color: $outline;
+        margin-bottom: 50px;
+    }
+    &-feature-icon {
+        font-size: 20px;
+        margin-right: 10px;
+        margin-bottom: 25px;
+    }
+    &-feature-title {
+        font-weight: 300;
+    }
+    &-start {
+        // trường hợp khi thẻ là thẻ inline thì cần cho display bloch và kèm theo width để fix content đến đâu
+        //chiều rộng đén đó tránh full width
+        display: block;
+        width: max-content;
+        // margin top-right/left-bottom (muốn làm được như vậy cần chuyển qua flex (1))
+        margin: auto auto 0;
+        // Để áp dụng hiệu ứng mượt hơn dùng
+        transition: all 0.2 linear;
+    }
+    @media screen and (max-width: 1023.98px) {
+        &-desc {
+            font-size: 13px;
+        }
+        &-feature-title {
+            font-size: 12px;
+        }
+        &-list {}
+    }
+    @media screen and (max-width: 767.98px) {
+        &-list {
+            // có thể sử dụng grid-scroll-snap để respon theo dạng slide kéo
+            display: grid;
+            justify-content: flex-start;
+            grid-auto-columns: 100%;
+            grid-auto-flow: column;
+            grid-gap: 0 59px;
+            overflow: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            scroll-snap-stop: always;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            -webkit-overflow-scrolling: touch;
+            scroll-padding: 1rem;
+            grid-template-columns: unset;
+            &::-webkit-scrollbar {
+                display: none;
+                width: 0;
+            }
+            &>* {
+                scroll-snap-align: start;
+                width: 100%;
+            }
+        }
+    }
+}
